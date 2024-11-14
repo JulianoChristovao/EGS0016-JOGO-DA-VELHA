@@ -1,16 +1,16 @@
-Palavra misteriosa: CACHORRO
-Letras consumidas: H, E, R, O, C, A
-Tentativas restantes: 5
+Palavra misteriosa: _ _ R R _
+Letras consumidas: Q, W, R, Y, I, T, U
+Tentativas restantes: 0
 ....___
 ....|.....|
-...O....|
-.../|\....|
-.../  ....|
+...   ....|
+...   ....|
+...   ....|
 ..........|
 .=========
 
 O jogo acabou!!!
 
-A palavra era: CACHORRO
+A palavra era: CARRO
 
-Você Venceu!!!
+Vocï¿½ Perdeu!!!
