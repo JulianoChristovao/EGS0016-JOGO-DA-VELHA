@@ -2,3 +2,10 @@ carro
 moto
 cachorro
 paralelepipedo
+garçom
+garagem
+casa
+cadeira
+mesa
+gato
+caminhonete
