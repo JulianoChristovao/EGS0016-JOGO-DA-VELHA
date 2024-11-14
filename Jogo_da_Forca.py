@@ -1,94 +1,88 @@
 import random  # importa a biblioteca para fazer o sorteio da palavra
 
 def sortear_palavra_misteriosa():#função para sortear uma palavra para o jogo
-    arquivo = open('plv_misteriosa.txt', 'r')
-    #with open('plv_misteriosa.txt', 'r') as arquivo: #Abre o arquivo plv_misteriosa
+    arquivo = open('plv_misteriosa.txt', 'r') # Abre o arquivo "plv_misteriosa.txt" como leitura e salva na variável "arquivo" 
     plv_misteriosa = arquivo.read().splitlines()  # Abre o arquivo e lê todas as palavras que estão nele
-    arquivo.close()
+    arquivo.close() # Fecha o arquivo
     return random.choice(plv_misteriosa)  # Sorteia uma das palavras do arquivo
 
 def salvar_partida_parcial(letras_acertadas, tentativas, letras_consumidas):# Função para salvar a partida a cada jogada para o HTML
-    #with open('partidas.txt', 'w') as arquivo:# Sobescreve o arquivo com os dados atualizados
-    arquivo = open('partidas.txt', 'w')
+    arquivo = open('partidas.txt', 'w') # Abre o arquivo "partidas.txt" para sobrescrever e salva na variável "arquivo" 
     arquivo.write(f"Palavra misteriosa: {' '.join(letras_acertadas)}\n")#Função join = junta todas as letras que estão em lista e foma a palavra no arquivo
     arquivo.write(f"Letras consumidas: {', '.join(letras_consumidas)}\n")# Esvreve no arquivo
     arquivo.write(f"Tentativas restantes: {tentativas}\n")#Escreve no arquivo
     match tentativas: # Desenha o enforcado conforme for sendo mutilado
         case 0:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 1:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 2:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write("... | ....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 3:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write(".../| ....|\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("   /|     |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 4:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write(r".../|\....|")
-            arquivo.write("\n")
-            arquivo.write("...   ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("   /|\    |\n")
+            arquivo.write("          |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 5:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write(r".../|\....|")
-            arquivo.write("\n")
-            arquivo.write(".../  ....|\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("   /|\    |\n")
+            arquivo.write("   /      |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
         case 6:
-            arquivo.write("....___\n")
-            arquivo.write("....|.....|\n")
-            arquivo.write("...O....|\n")
-            arquivo.write(r".../|\....|")
-            arquivo.write("\n")
-            arquivo.write(r".../ \....|")
-            arquivo.write("\n")
-            arquivo.write("..........|\n")
-            arquivo.write(".=========\n")
-    arquivo.close()
+            arquivo.write("    ___\n")
+            arquivo.write("    |     |\n")
+            arquivo.write("   O    |\n")
+            arquivo.write("   /|\    |\n")
+            arquivo.write("   / \    |\n")
+            arquivo.write("          |\n")
+            arquivo.write(" =========\n")
+    arquivo.close() # Fecha o arquivo
 
-    roda_html() # Chama a funçã para atualizar o html com a ultima jogada
+    roda_html() # Chama a função para atualizar o html com a ultima jogada
 
 def salvar_partida(resultado, palavra_misteriosa): #Função para salvar a partida apontando o resultado de venceu ou perdeu
-    arquivo = open('partidas.txt', 'a')
+    arquivo = open('partidas.txt', 'a') # Abre o arquivo "partidas.txt" para adicionar e salva na variável "arquivo" 
     arquivo.write(f"\nO jogo acabou!!!\n\nA palavra era: {palavra_misteriosa}\n\nVocê {resultado}!!!") # Escreve no arquivo partidas.txt o resultado e revela a palavra misteriosa
-    arquivo.close()
+    arquivo.close() # Fecha o arquivo
 
 def roda_html():#Função para criar o HTML
-    arquivo = open('partidas.txt', 'r')
+    arquivo = open('partidas.txt', 'r') # Abre o arquivo "partidas.txt" como leitura e salva na variável "arquivo" 
     ultimas_partidas = arquivo.read().splitlines() # Função .splitlines() divide o arquivo linha por linha
-    arquivo.close()
+    arquivo.close() # Fecha o arquivo
 
-    arquivo = open('IHM.html', 'w')
+    arquivo = open('IHM.html', 'w') # Abre o arquivo "IHM.html" para sobrescrever e salva na variável "arquivo" 
     html = """<!DOCTYPE html>
 <html>
 <head>
@@ -109,11 +103,11 @@ def roda_html():#Função para criar o HTML
 <pre>
 """
     for linha in ultimas_partidas: 
-        html += f"{linha.strip()}\n" #adiciona o conteúdo formatado da linha (agora sem espaços extras) à variável html | .strip() remove qualquer espaço em branco no início e no final de linha
+        html += f"{linha}\n" # adiciona o conteúdo da variável "ultimas_partidas" linha a linha à variável "html"
     html += """</pre>   
 </body>
 </html>"""
-    arquivo.write(html) # escreve o HTML
+    arquivo.write(html) # escreve o no arquvo HTML
     arquivo.close()
 
 def jogo_principal():#Função principal do jogo.   
@@ -135,7 +129,7 @@ def jogo_principal():#Função principal do jogo.
                 for i in range(len(palavra_misteriosa)):  # Substitui '_' pela letra correta nos índices correspondentes
                     if palavra_misteriosa[i] == palpite: # quando o loop chegar na posição correta da letra
                         letras_acertadas[i] = palpite # Adiciona a letra na posição que deu match
-            elif palpite not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            elif palpite not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ": # verifica se o que foi digitado for letras, caso não for solicita a leitura novamente
                     print('Opção inválida, digite novamente!')
             else:
                     tentativas -= 1  # Decrementa as tentativas em caso de erro
@@ -153,11 +147,11 @@ def jogo_principal():#Função principal do jogo.
     return resultado, palavra_misteriosa  # Retorna o resultado e a palavra misteriosa ao final do jogo
 
 def limpar_IHM(): # Função para limpar a IHM para começão um novo jogo
-    arquivo = open('partidas.txt', 'w')
-    arquivo.write("Vamos iniciar a jogada!!!\n")
-    arquivo.write("Boa sorte!!!\n")
-    arquivo.close()
-    roda_html()
+    arquivo = open('partidas.txt', 'w') # Abre o arquivo "partidas.txt" para sobrescrever e salva na variável "arquivo"
+    arquivo.write("Vamos iniciar a jogada!!!\n") # Escreve o texto no arquivo
+    arquivo.write("Boa sorte!!!\n") # Escreve o texto no arquivo
+    arquivo.close() # Fecha o arquivo
+    roda_html() # Chama a função para atualizar o html
 
 # Bloco principal
 while True:
