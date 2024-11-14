@@ -1,110 +1,120 @@
 import random  # importa a biblioteca para fazer o sorteio da palavra
 
 def sortear_palavra_misteriosa():#função para sortear uma palavra para o jogo
-    with open('plv_misteriosa.txt', 'r') as arquivo: #Abre o arquivo plv_misteriosa
-        plv_misteriosa = arquivo.read().splitlines()  # Abre o arquivo e lê todas as palavras que estão nele
+    arquivo = open('plv_misteriosa.txt', 'r')
+    #with open('plv_misteriosa.txt', 'r') as arquivo: #Abre o arquivo plv_misteriosa
+    plv_misteriosa = arquivo.read().splitlines()  # Abre o arquivo e lê todas as palavras que estão nele
+    arquivo.close()
     return random.choice(plv_misteriosa)  # Sorteia uma das palavras do arquivo
 
 def salvar_partida_parcial(letras_acertadas, tentativas, letras_consumidas):# Função para salvar a partida a cada jogada para o HTML
-    with open('partidas.txt', 'w') as arquivo:# Sobescreve o arquivo com os dados atualizados
-        arquivo.write(f"Palavra misteriosa: {''.join(letras_acertadas)}\n")#Função join = junta todas as letras que estão em lista e foma a palavra no arquivo
-        arquivo.write(f"Letras consumidas: {', '.join(letras_consumidas)}\n")# Esvreve no arquivo
-        arquivo.write(f"Tentativas restantes: {tentativas}\n")#Escreve no arquivo
-        match tentativas: # Desenha o enforcado conforme for sendo mutilado
-            case 0:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 1:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 2:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write("... | ....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 3:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write(".../| ....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 4:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write(".../|\....|\n")
-                arquivo.write("...   ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 5:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write(".../|\....|\n")
-                arquivo.write(".../  ....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-            case 6:
-                arquivo.write("....___\n")
-                arquivo.write("....|.....|\n")
-                arquivo.write("...O....|\n")
-                arquivo.write(".../|\....|\n")
-                arquivo.write(".../ \....|\n")
-                arquivo.write("..........|\n")
-                arquivo.write(".=========\n")
-
+    #with open('partidas.txt', 'w') as arquivo:# Sobescreve o arquivo com os dados atualizados
+    arquivo = open('partidas.txt', 'w')
+    arquivo.write(f"Palavra misteriosa: {' '.join(letras_acertadas)}\n")#Função join = junta todas as letras que estão em lista e foma a palavra no arquivo
+    arquivo.write(f"Letras consumidas: {', '.join(letras_consumidas)}\n")# Esvreve no arquivo
+    arquivo.write(f"Tentativas restantes: {tentativas}\n")#Escreve no arquivo
+    match tentativas: # Desenha o enforcado conforme for sendo mutilado
+        case 0:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 1:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 2:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write("... | ....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 3:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write(".../| ....|\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 4:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write(r".../|\....|")
+            arquivo.write("\n")
+            arquivo.write("...   ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 5:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write(r".../|\....|")
+            arquivo.write("\n")
+            arquivo.write(".../  ....|\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+        case 6:
+            arquivo.write("....___\n")
+            arquivo.write("....|.....|\n")
+            arquivo.write("...O....|\n")
+            arquivo.write(r".../|\....|")
+            arquivo.write("\n")
+            arquivo.write(r".../ \....|")
+            arquivo.write("\n")
+            arquivo.write("..........|\n")
+            arquivo.write(".=========\n")
+    arquivo.close()
 
     roda_html() # Chama a funçã para atualizar o html com a ultima jogada
 
 def salvar_partida(resultado, palavra_misteriosa): #Função para salvar a partida apontando o resultado de venceu ou perdeu
-    with open('partidas.txt', 'a') as arquivo:#Abre o arquivo partidas.txt
-        arquivo.write(f"\nO jogo acabou!!!\n\nA palavra era: {palavra_misteriosa}\n\nVocê {resultado}!!!") # Escreve no arquivo partidas.txt o resultado e revela a palavra misteriosa
+    arquivo = open('partidas.txt', 'a')
+    arquivo.write(f"\nO jogo acabou!!!\n\nA palavra era: {palavra_misteriosa}\n\nVocê {resultado}!!!") # Escreve no arquivo partidas.txt o resultado e revela a palavra misteriosa
+    arquivo.close()
 
 def roda_html():#Função para criar o HTML
-    with open('partidas.txt', 'r') as arquivo: # Abre o arquivo para ler e imprimir no HTML
-        ultimas_partidas = arquivo.read().splitlines() # Função .splitlines() divide o arquivo linha por linha
+    arquivo = open('partidas.txt', 'r')
+    ultimas_partidas = arquivo.read().splitlines() # Função .splitlines() divide o arquivo linha por linha
+    arquivo.close()
 
-    with open('IHM.html', 'w') as arquivo: # Abre o arquivo do HTML para escrever "sobrescreve o arquivo a cada chamada da função"
-        html = """<!DOCTYPE html>
+    arquivo = open('IHM.html', 'w')
+    html = """<!DOCTYPE html>
 <html>
 <head>
-    <title>Jogo da Forca - Versão EGS0016</title>
-    <style>
-        pre { font-family: Arial, sans-serif; font-size: 14px; }
-    </style>
+<title>Jogo da Forca - Versão EGS0016</title>
+<style>
+    pre { font-family: Arial, sans-serif; font-size: 14px; }
+</style>
 </head>
 <body>
-    <h4>Escola: Uniasselvi Indaial</h4>
-    <h4>Materia: Algoritimos e lógica de Programação</h4>
-    <h4>Professor: Rodrigo Michalovski Szatkowski</h4>
-    <h4>Nome: Juliano Christovão</h4>
-    <h4>Turma: EGS0016 - 2</h4>
-    <h4>__________________________________________</h4>
-    <h1>Jogo da Forca</h1>
-    <h4>__________________________________________</h4>
-    <pre>
+<h4>Escola: Uniasselvi Indaial</h4>
+<h4>Materia: Algoritimos e lógica de Programação</h4>
+<h4>Professor: Rodrigo Michalovski Szatkowski</h4>
+<h4>Nome: Juliano Christovão</h4>
+<h4>Turma: EGS0016 - 2</h4>
+<h4>__________________________________________</h4>
+<h1>Jogo da Forca</h1>
+<h4>__________________________________________</h4>
+<pre>
 """
-        for linha in ultimas_partidas: 
-            html += f"{linha.strip()}\n" #adiciona o conteúdo formatado da linha (agora sem espaços extras) à variável html | .strip() remove qualquer espaço em branco no início e no final de linha
-        html += """</pre> # Fecha a tag pre e 
+    for linha in ultimas_partidas: 
+        html += f"{linha.strip()}\n" #adiciona o conteúdo formatado da linha (agora sem espaços extras) à variável html | .strip() remove qualquer espaço em branco no início e no final de linha
+    html += """</pre>   
 </body>
 </html>"""
-        arquivo.write(html) # escreve o HTML
+    arquivo.write(html) # escreve o HTML
+    arquivo.close()
 
 def jogo_principal():#Função principal do jogo.   
     palavra_misteriosa = sortear_palavra_misteriosa().upper()  # Chama a função para selecionar aleatoriamente uma palavra do arquivo
@@ -125,9 +135,11 @@ def jogo_principal():#Função principal do jogo.
                 for i in range(len(palavra_misteriosa)):  # Substitui '_' pela letra correta nos índices correspondentes
                     if palavra_misteriosa[i] == palpite: # quando o loop chegar na posição correta da letra
                         letras_acertadas[i] = palpite # Adiciona a letra na posição que deu match
+            elif palpite not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                    print('Opção inválida, digite novamente!')
             else:
-                tentativas -= 1  # Decrementa as tentativas em caso de erro
-                print('Letra digitada incorreta, digite novamente!')
+                    tentativas -= 1  # Decrementa as tentativas em caso de erro
+                    print('Não existe esta letra na palavra, digite novamente!')
 
         salvar_partida_parcial(letras_acertadas, tentativas, letras_consumidas)  # Atualiza o HTML a cada jogada
 
@@ -141,13 +153,15 @@ def jogo_principal():#Função principal do jogo.
     return resultado, palavra_misteriosa  # Retorna o resultado e a palavra misteriosa ao final do jogo
 
 def limpar_IHM(): # Função para limpar a IHM para começão um novo jogo
-    with open('partidas.txt', 'w') as arquivo:
-        arquivo.write("Vamos iniciar a jogada\n")
+    arquivo = open('partidas.txt', 'w')
+    arquivo.write("Vamos iniciar a jogada!!!\n")
+    arquivo.write("Boa sorte!!!\n")
+    arquivo.close()
     roda_html()
 
 # Bloco principal
 while True:
-    limpar_IHM()
+    limpar_IHM()# Reinicia o jogo no HTML
     resultado, palavra_misteriosa = jogo_principal()  # Chama a função principal e armazena o resultado
     salvar_partida(resultado, palavra_misteriosa)  # Salva o resultado da partida
     roda_html()  # Gera o HTML final com o histórico
